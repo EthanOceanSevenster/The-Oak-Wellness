@@ -1,6 +1,13 @@
 import { cache } from "react";
 
-export const API_URL = process.env.API_URL ?? "http://127.0.0.1:8000";
+// On Vercel, API_URL is injected by the service binding in vercel.json; locally
+// it defaults to the Django dev server.
+const API_URL = process.env.API_URL ?? "http://127.0.0.1:8000";
+
+export function apiUrl(path: string) {
+  const base = API_URL.endsWith("/") ? API_URL : `${API_URL}/`;
+  return new URL(path.replace(/^\//, ""), base).toString();
+}
 
 export type CtaLink = {
   label: string;
@@ -63,7 +70,7 @@ export type BookingOptions = {
 
 async function getJson<T>(path: string): Promise<T | null> {
   try {
-    const res = await fetch(`${API_URL}${path}`, { cache: "no-store" });
+    const res = await fetch(apiUrl(path), { cache: "no-store" });
     if (!res.ok) {
       throw new Error(`API responded with ${res.status}`);
     }

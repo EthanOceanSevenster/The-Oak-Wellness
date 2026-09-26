@@ -5,6 +5,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getSiteContent } from "@/lib/api";
 import "./globals.css";
 
+// Every page reads its content from Django on each request. This also keeps
+// `next build` from calling the API, which isn't reachable during a Vercel build.
+export const dynamic = "force-dynamic";
+
 const merriweather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],

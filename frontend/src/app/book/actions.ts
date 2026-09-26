@@ -1,6 +1,6 @@
 "use server";
 
-import { API_URL } from "@/lib/api";
+import { apiUrl } from "@/lib/api";
 
 export type BookingFormState =
   | { status: "idle" }
@@ -49,7 +49,7 @@ export async function requestBooking(
 
   let response: Response;
   try {
-    response = await fetch(`${API_URL}/api/bookings/`, {
+    response = await fetch(apiUrl("/api/bookings/"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

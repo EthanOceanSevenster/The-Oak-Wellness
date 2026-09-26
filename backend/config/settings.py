@@ -13,20 +13,48 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 
+import dj_database_url
+from django.core.exceptions import ImproperlyConfigured
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Vercel sets VERCEL=1 during builds and at runtime. There, settings come from
+# the project's environment variables; locally the development defaults apply.
+ON_VERCEL = bool(os.environ.get('VERCEL'))
 
-# Quick-start development settings - unsuitable for production
+
+# Security
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y)wqzb^8x%q4ex#s@i9aty90!ls)oom6=vzf=-w^jlb6f@6--7'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+if not SECRET_KEY:
+    if ON_VERCEL:
+        raise ImproperlyConfigured(
+            'Set DJANGO_SECRET_KEY in the Vercel project environment variables.'
+        )
+    # Local development only; never used on Vercel.
+    SECRET_KEY = 'django-insecure-y)wqzb^8x%q4ex#s@i9aty90!ls)oom6=vzf=-w^jlb6f@6--7'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not ON_VERCEL
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+if ON_VERCEL:
+    # Requests only arrive through Vercel's routing: the site's own domains,
+    # plus internal calls from the frontend service, whose host names Vercel
+    # generates per deployment. So any host is accepted.
+    ALLOWED_HOSTS = ['*']
+    # Vercel terminates HTTPS and passes the original scheme in this header.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    # For signing in to the Django admin. Add custom domains (comma-separated,
+    # e.g. https://www.example.com) in DJANGO_CSRF_TRUSTED_ORIGINS.
+    CSRF_TRUSTED_ORIGINS = [
+        'https://*.vercel.app',
+        *filter(None, os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')),
+    ]
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -77,12 +105,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Vercel's filesystem is read-only, so production needs a hosted database
+# (e.g. Neon Postgres, which sets DATABASE_URL). Locally, SQLite is used.
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {'default': dj_database_url.parse(os.environ['DATABASE_URL'])}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
 
 
 # Password validation
@@ -120,16 +153,36 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+# Vercel runs collectstatic into this folder and serves it from its CDN.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
+# Without EMAIL_HOST, emails are printed to the console (on Vercel, to the
+# function logs) instead of being sent.
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+if os.environ.get('EMAIL_HOST'):
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+            'OPTIONS': {
+                'host': os.environ['EMAIL_HOST'],
+                'port': int(os.environ.get('EMAIL_PORT', '587')),
+                'username': os.environ.get('EMAIL_HOST_USER', ''),
+                'password': os.environ.get('EMAIL_HOST_PASSWORD', ''),
+                'use_tls': True,
+            },
+        },
+    }
+else:
+    MAILERS = {
+        'default': {
+            'BACKEND': 'django.core.mail.backends.console.EmailBackend',
+        },
+    }
+
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
 
 
 # CORS
@@ -142,7 +195,7 @@ CORS_ALLOWED_ORIGINS = [
 
 
 # Bookings
-# New booking requests are emailed here. In development emails are printed to
-# the console (see MAILERS above); configure a real mailer before going live.
+# New booking requests are emailed here (see Email above for when they are
+# actually sent).
 
 BOOKING_NOTIFY_EMAIL = os.environ.get('BOOKING_NOTIFY_EMAIL', 'zenanitab@gmail.com')

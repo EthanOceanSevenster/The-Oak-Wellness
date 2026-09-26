@@ -41,7 +41,36 @@ cd backend
 python manage.py createsuperuser
 ```
 
-Each new request is also emailed to `BOOKING_NOTIFY_EMAIL` (default `zenanitab@gmail.com`). In development, emails are printed in the Django terminal instead of being sent. Before going live, set up a real mailer in `MAILERS` in `backend/config/settings.py` and set `DEFAULT_FROM_EMAIL`.
+Each new request is also emailed to `BOOKING_NOTIFY_EMAIL` (default `zenanitab@gmail.com`). Emails are only sent when SMTP is configured (see the environment variables below); otherwise they are printed in the Django terminal, or in the Vercel function logs.
+
+## Deploying to Vercel
+
+Both apps deploy as one Vercel project using [Vercel Services](https://vercel.com/docs/services), configured in `vercel.json`:
+
+- `/admin` and `/static` go to Django (the admin and its styles).
+- Everything else goes to Next.js.
+- The Django API is not public. Next.js reaches it over an internal service binding, which sets `API_URL` for the frontend.
+
+In the Vercel project:
+
+1. **Settings → Build and Deployment**: set **Framework Preset** to **Services** and leave **Root Directory** as `./`.
+2. **Storage**: add a Postgres database (e.g. Neon). This sets `DATABASE_URL`. Vercel's filesystem is read-only, so bookings can't be stored in SQLite there.
+3. **Settings → Environment Variables**: add
+   - `DJANGO_SECRET_KEY` – a long random value, e.g. from `python -c "import secrets; print(secrets.token_urlsafe(50))"`
+   - optional, to send booking emails: `EMAIL_HOST`, `EMAIL_PORT` (default 587), `EMAIL_HOST_USER`, `EMAIL_HOST_PASSWORD`, `DEFAULT_FROM_EMAIL`
+   - optional, for a custom domain: `DJANGO_CSRF_TRUSTED_ORIGINS`, e.g. `https://www.example.com`
+4. Redeploy.
+
+Then create the database tables and an admin login, from your machine, against the production database (copy `DATABASE_URL` from the Vercel project):
+
+```sh
+cd backend
+$env:DATABASE_URL = "postgresql://..."   # PowerShell; cmd: set DATABASE_URL=...; macOS/Linux: export DATABASE_URL=...
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+Run `migrate` the same way whenever a new migration is added.
 
 ## Tests
 
