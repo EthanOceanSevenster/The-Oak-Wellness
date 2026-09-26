@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logoFull from "@/assets/logo-full.png";
+import logoFull from "@/assets/logo-full.webp";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Swoosh } from "@/components/Swoosh";
 import type { SiteContent } from "@/lib/api";
