@@ -7,8 +7,11 @@ import { useState } from "react";
 import { navLinks } from "@/lib/navigation";
 import { ButtonLink } from "./ButtonLink";
 
+// "/about/" and "/about" are the same page (the site uses trailing slashes).
+const withoutSlash = (path: string) => path.replace(/(.)\/$/, "$1");
+
 export function MainNav() {
-  const pathname = usePathname();
+  const pathname = withoutSlash(usePathname());
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
