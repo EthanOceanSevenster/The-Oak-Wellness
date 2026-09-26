@@ -14,7 +14,8 @@
       ]
     },
     "backend": {
-      "root": "backend/"
+      "root": "backend/",
+      "entrypoint": "config.wsgi:application"
     }
   },
   "rewrites": [
