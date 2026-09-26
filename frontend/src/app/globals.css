@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* Brand colours, sampled from The Oak Wellness business card. */
+@theme inline {
+  --color-paper: #fcfbf6;
+  --color-lilac: #f3eefb;
+  --color-lavender: #c68fe7;
+  --color-sky: #92d0fb;
+  --color-violet: #6b35c8;
+  --color-plum: #4c117b;
+  --color-indigo: #26066c;
+  --color-midnight: #190354;
+  --color-gold: #efae50;
+
+  --font-sans: var(--font-source-sans);
+  --font-serif: var(--font-merriweather);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-midnight);
+}
