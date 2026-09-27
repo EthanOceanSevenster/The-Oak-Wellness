@@ -63,6 +63,16 @@ export function SiteFooter({ content }: { content: SiteContent | null }) {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href={content.contact.whatsapp_href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-paper"
+                  >
+                    WhatsApp {content.contact.phone}
+                  </a>
+                </li>
+                <li>
                   <a href={`mailto:${content.contact.email}`} className="break-words hover:text-paper">
                     {content.contact.email}
                   </a>

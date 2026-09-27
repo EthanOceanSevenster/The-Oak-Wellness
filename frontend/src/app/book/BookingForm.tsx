@@ -77,11 +77,19 @@ export function BookingForm({
           Your booking request has been sent to The Oak Wellness.
         </p>
         <p className="mt-3 text-midnight/70">
-          You can also call{" "}
+          You can also call or{" "}
+          <a
+            href={contact.whatsapp_href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-violet underline"
+          >
+            WhatsApp
+          </a>{" "}
           <a href={contact.phone_href} className="font-semibold text-violet underline">
             {contact.phone}
-          </a>{" "}
-          or email{" "}
+          </a>
+          , or email{" "}
           <a href={`mailto:${contact.email}`} className="font-semibold text-violet underline">
             {contact.email}
           </a>

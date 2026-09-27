@@ -17,13 +17,16 @@ export type CtaLink = {
 export type ServiceGroup = {
   slug: string;
   audience: string;
+  intro?: string;
   items: string[];
+  outro?: string;
 };
 
 export type Contact = {
   address_lines: string[];
   phone: string;
   phone_href: string;
+  whatsapp_href: string;
   email: string;
 };
 

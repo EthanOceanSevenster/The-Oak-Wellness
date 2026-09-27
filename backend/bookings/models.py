@@ -13,6 +13,7 @@ class BookingRequest(models.Model):
 
     class ContactMethod(models.TextChoices):
         PHONE = 'phone', 'Phone call'
+        WHATSAPP = 'whatsapp', 'WhatsApp'
         EMAIL = 'email', 'Email'
 
     class Status(models.TextChoices):

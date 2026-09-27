@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Unavailable } from "@/components/Unavailable";
@@ -44,6 +44,17 @@ export default async function BookPage() {
               >
                 <Phone aria-hidden="true" className="h-5 w-5 shrink-0 text-violet" />
                 {contact.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={contact.whatsapp_href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 font-semibold text-indigo hover:text-violet"
+              >
+                <MessageCircle aria-hidden="true" className="h-5 w-5 shrink-0 text-violet" />
+                WhatsApp {contact.phone}
               </a>
             </li>
             <li>

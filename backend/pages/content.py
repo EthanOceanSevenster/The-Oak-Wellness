@@ -94,15 +94,36 @@ SITE_CONTENT = {
         {
             'slug': 'youth',
             'audience': 'Adolescents and Youth',
+            # Optional: shown above and below the list on the Services page.
+            'intro': (
+                'Adolescence and young adulthood can bring emotional, social and '
+                'academic challenges. At The Oak Families and Wellness, we provide '
+                'a safe, confidential and supportive environment where young people '
+                'can express themselves, develop healthy coping skills and grow in '
+                'confidence.'
+            ),
             'items': [
-                'Adolescent coaching',
-                'Emotional and behavioural support',
-                'Self-esteem and identity development',
-                'Peer-pressure and relationship guidance',
-                'School-related stress and adjustment',
-                'Support for youth in and out of school',
-                'Goal-setting and life-skills development',
+                'Individual counselling and emotional support',
+                'Adolescent coaching and personal development',
+                'Support with anxiety, stress and low self-esteem',
+                'Depression, grief and trauma support',
+                'Anger management and emotional regulation',
+                'Bullying and peer-pressure intervention',
+                'Behavioural and disciplinary support',
+                'School-related stress and academic difficulties',
+                'Career guidance and preparation for adulthood',
+                'Substance-use awareness and early intervention',
+                'Healthy relationships and responsible decision-making',
+                'Family communication and conflict resolution',
+                'Support during separation, divorce and other family changes',
+                'Life-skills development and goal setting',
+                'Crisis support and referral to specialised services when necessary',
             ],
+            'outro': (
+                'Our goal is to help adolescents and young people recognise their '
+                'strengths, make positive choices and move towards a healthy, '
+                'hopeful and fulfilling future.'
+            ),
         },
         {
             'slug': 'families',
@@ -113,17 +134,6 @@ SITE_CONTENT = {
                 'Family conflict management',
                 'Support for parents with children with learning challenges',
                 'Healthy communication and coping skills',
-            ],
-        },
-        {
-            'slug': 'mothers',
-            'audience': 'Mothers and Babies',
-            'items': [
-                'Emotional support during pregnancy and motherhood',
-                'Adjustment to parenting',
-                'Maternal wellness support',
-                'Strengthening the mother–baby bond',
-                'Referral to appropriate community and professional services when required',
             ],
         },
         {
@@ -186,6 +196,8 @@ SITE_CONTENT = {
         'address_lines': ['134 Kempston Road', 'Gqeberha'],
         'phone': '079 260 4577',
         'phone_href': 'tel:+27792604577',
+        # Same number, confirmed by the practice for WhatsApp.
+        'whatsapp_href': 'https://wa.me/27792604577',
         'email': 'zenanitab@gmail.com',
     },
 }

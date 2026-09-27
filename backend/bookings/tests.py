@@ -115,5 +115,5 @@ class BookingOptionsTests(TestCase):
         self.assertEqual(services[-1], 'unsure')
         self.assertEqual(
             [option['value'] for option in data['contact_methods']],
-            ['phone', 'email'],
+            ['phone', 'whatsapp', 'email'],
         )

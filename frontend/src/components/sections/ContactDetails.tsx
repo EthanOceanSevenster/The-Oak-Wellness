@@ -1,9 +1,10 @@
-import { Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import type { Contact } from "@/lib/api";
 
 const cardClasses =
   "flex h-full flex-col items-center rounded-2xl border border-indigo/10 bg-white p-8 text-center shadow-sm shadow-indigo/5";
+const linkCardClasses = `${cardClasses} transition hover:-translate-y-0.5 hover:border-violet/40 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet`;
 
 function CardBody({
   icon: Icon,
@@ -22,7 +23,7 @@ function CardBody({
       <span className="mt-5 text-sm font-bold tracking-[0.2em] text-violet uppercase">
         {label}
       </span>
-      <span className="mt-2 text-xl font-semibold break-words text-indigo">
+      <span className="mt-2 text-lg font-semibold break-words text-indigo">
         {children}
       </span>
     </>
@@ -32,14 +33,30 @@ function CardBody({
 export function ContactDetails({ contact }: { contact: Contact }) {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-20">
-      <ul className="grid gap-5 md:grid-cols-3">
+      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <li>
-          <a
-            href={contact.phone_href}
-            className={`${cardClasses} transition hover:-translate-y-0.5 hover:border-violet/40 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet`}
-          >
+          <a href={contact.phone_href} className={linkCardClasses}>
             <CardBody icon={Phone} label="Telephone">
               {contact.phone}
+            </CardBody>
+          </a>
+        </li>
+        <li>
+          <a
+            href={contact.whatsapp_href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkCardClasses}
+          >
+            <CardBody icon={MessageCircle} label="WhatsApp">
+              {contact.phone}
+            </CardBody>
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${contact.email}`} className={linkCardClasses}>
+            <CardBody icon={Mail} label="Email">
+              {contact.email}
             </CardBody>
           </a>
         </li>
@@ -53,16 +70,6 @@ export function ContactDetails({ contact }: { contact: Contact }) {
               ))}
             </CardBody>
           </div>
-        </li>
-        <li>
-          <a
-            href={`mailto:${contact.email}`}
-            className={`${cardClasses} transition hover:-translate-y-0.5 hover:border-violet/40 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet`}
-          >
-            <CardBody icon={Mail} label="Email">
-              {contact.email}
-            </CardBody>
-          </a>
         </li>
       </ul>
     </section>

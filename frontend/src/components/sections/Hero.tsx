@@ -13,7 +13,8 @@ export function Hero({ hero }: { hero: SiteContent["hero"] }) {
           <p className="text-sm font-bold tracking-[0.2em] text-violet uppercase">
             {hero.eyebrow}
           </p>
-          <h1 className="mt-5 font-serif text-4xl leading-[1.15] font-black tracking-tight text-balance text-indigo sm:text-5xl lg:text-[3.5rem]">
+          {/* Sized to keep the headline to 2–3 lines at every screen width. */}
+          <h1 className="mt-5 font-serif text-[1.625rem] leading-[1.2] font-black tracking-tight text-balance text-indigo sm:text-[2rem] md:text-[1.75rem] lg:text-4xl xl:text-[2.75rem]">
             {hero.title}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-midnight/75 sm:text-xl">

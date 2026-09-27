@@ -1,5 +1,4 @@
 import {
-  Baby,
   Backpack,
   BriefcaseBusiness,
   Leaf,
@@ -14,7 +13,6 @@ const serviceIcons: Record<string, LucideIcon> = {
   children: Smile,
   youth: Backpack,
   families: Users,
-  mothers: Baby,
   employees: BriefcaseBusiness,
   individuals: MessageCircleHeart,
 };

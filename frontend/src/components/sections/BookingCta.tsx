@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Swoosh } from "@/components/Swoosh";
 import type { Contact } from "@/lib/api";
@@ -13,7 +13,7 @@ export function BookingCta({ contact }: { contact: Contact }) {
             Book a session
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg text-paper/80">
-            Book online, or call us on {contact.phone}.
+            Book online, call or WhatsApp {contact.phone}, or email {contact.email}.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/book" variant="gold">
@@ -21,7 +21,20 @@ export function BookingCta({ contact }: { contact: Contact }) {
             </ButtonLink>
             <ButtonLink href={contact.phone_href} variant="light">
               <Phone aria-hidden="true" className="h-4 w-4" />
-              Call {contact.phone}
+              Call
+            </ButtonLink>
+            <ButtonLink
+              href={contact.whatsapp_href}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="light"
+            >
+              <MessageCircle aria-hidden="true" className="h-4 w-4" />
+              WhatsApp
+            </ButtonLink>
+            <ButtonLink href={`mailto:${contact.email}`} variant="light">
+              <Mail aria-hidden="true" className="h-4 w-4" />
+              Email
             </ButtonLink>
           </div>
         </div>
