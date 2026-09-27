@@ -111,7 +111,7 @@ SITE_CONTENT = {
                 'Parenting support and guidance',
                 'Strengthening parent–child relationships',
                 'Family conflict management',
-                'Support during separation, divorce and family transitions',
+                'Support for parents with children with learning challenges',
                 'Healthy communication and coping skills',
             ],
         },
