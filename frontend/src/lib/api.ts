@@ -43,6 +43,13 @@ export type SiteContent = {
     secondary_cta: CtaLink;
     highlights: string[];
   };
+  meet: {
+    title: string;
+    name: string;
+    role: string;
+    registration: string;
+    paragraphs: string[];
+  };
   page_titles: Record<"about" | "services" | "approach" | "contact" | "book", string>;
   about: {
     paragraphs: string[];

@@ -32,6 +32,40 @@ SITE_CONTENT = {
             'A person-centred and strengths-based approach',
         ],
     },
+    # Introduction from the social worker, with her photo. The home page shows
+    # the first two paragraphs; the About page shows all of them.
+    'meet': {
+        'title': 'Meet Sinobungcwele Tabita Kwatsha',
+        'name': 'Sinobungcwele Tabita Kwatsha',
+        'role': 'Social Worker in Private Practice',
+        'registration': 'Reg No: 10-28261',
+        'paragraphs': [
+            'Welcome to The Oak Families and Wellness.',
+            (
+                'My name is Sinobungcwele Tabita Kwatsha, a qualified and '
+                'registered Social Worker with over 15 years of professional '
+                'experience supporting children, adolescents, adults and families. '
+                'I hold a Bachelor of Social Work degree from the University of '
+                'KwaZulu-Natal, as well as certificates in Employee Assistance '
+                'Programmes and HIV Care and Counselling from UNISA.'
+            ),
+            (
+                'My passion is to provide a warm, confidential and non-judgmental '
+                'environment where every person feels heard, respected and '
+                'supported. Through counselling, coaching and practical guidance, '
+                'I help individuals navigate emotional difficulties, family and '
+                'relationship challenges, workplace concerns and important life '
+                'transitions.'
+            ),
+            (
+                'Like a strong oak tree, I believe every person has the ability to '
+                'grow, heal and regain strength—even during life’s most difficult '
+                'seasons. At The Oak Families and Wellness, you do not have to face '
+                'your challenges alone. I am here to walk alongside you on your '
+                'journey towards healing, resilience and renewed hope.'
+            ),
+        ],
+    },
     'page_titles': {
         'about': 'About Us',
         'services': 'Our Services',

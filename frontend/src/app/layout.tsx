@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
+import { MotionProvider } from "@/components/MotionProvider";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getSiteContent } from "@/lib/api";
@@ -40,9 +41,11 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       {/* Browser extensions (e.g. ColorZilla) add attributes to <body> before
           React loads; this ignores those attribute differences on <body> only. */}
       <body suppressHydrationWarning className="flex min-h-full flex-col font-sans">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter content={content} />
+        <MotionProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter content={content} />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -11,6 +11,7 @@ class SiteContentApiTests(TestCase):
         for key in (
             'practice',
             'hero',
+            'meet',
             'page_titles',
             'about',
             'values',
