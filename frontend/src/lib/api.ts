@@ -34,6 +34,8 @@ export type SiteContent = {
   practice: {
     name: string;
     tagline: string;
+    registration: string;
+    practice_number: string;
   };
   hero: {
     eyebrow: string;
@@ -47,7 +49,6 @@ export type SiteContent = {
     title: string;
     name: string;
     role: string;
-    registration: string;
     paragraphs: string[];
   };
   page_titles: Record<"about" | "services" | "approach" | "contact" | "book", string>;

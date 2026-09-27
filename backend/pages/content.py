@@ -11,6 +11,8 @@ SITE_CONTENT = {
     'practice': {
         'name': 'The Oak Wellness',
         'tagline': 'Strength • Growth • Wellness',
+        'registration': 'Reg No: 10-28261',
+        'practice_number': 'Practice No: 1369229',
     },
     'hero': {
         'eyebrow': 'Strength • Growth • Wellness',
@@ -38,7 +40,6 @@ SITE_CONTENT = {
         'title': 'Meet Sinobungcwele Tabita Kwatsha',
         'name': 'Sinobungcwele Tabita Kwatsha',
         'role': 'Social Worker in Private Practice',
-        'registration': 'Reg No: 10-28261',
         'paragraphs': [
             'Welcome to The Oak Families and Wellness.',
             (

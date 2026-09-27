@@ -21,7 +21,7 @@ export default async function AboutPage() {
   return (
     <>
       <PageHeader title={content.page_titles.about} />
-      <Meet meet={content.meet} />
+      <Meet meet={content.meet} practice={content.practice} />
       <AboutStory about={content.about} />
       <Values values={content.values} />
       <Commitment commitment={content.commitment} tagline={content.practice.tagline} />

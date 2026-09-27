@@ -20,9 +20,16 @@ export function SiteFooter({ content }: { content: SiteContent | null }) {
             <Wordmark tone="light" />
           </div>
           {content && (
-            <p className="mt-5 text-xs font-bold tracking-[0.25em] text-gold uppercase">
-              {content.practice.tagline}
-            </p>
+            <>
+              <p className="mt-5 text-xs font-bold tracking-[0.25em] text-gold uppercase">
+                {content.practice.tagline}
+              </p>
+              <p className="mt-4 text-sm">
+                {content.practice.registration}
+                <br />
+                {content.practice.practice_number}
+              </p>
+            </>
           )}
         </div>
 

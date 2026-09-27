@@ -17,9 +17,11 @@ const ease = [0.22, 1, 0.36, 1] as const;
 // paragraphs with a link to the full version on the About page.
 export function Meet({
   meet,
+  practice,
   brief = false,
 }: {
   meet: SiteContent["meet"];
+  practice: SiteContent["practice"];
   brief?: boolean;
 }) {
   const paragraphs = brief ? meet.paragraphs.slice(0, 2) : meet.paragraphs;
@@ -54,7 +56,9 @@ export function Meet({
         <figcaption className="relative mx-6 -mt-10 rounded-2xl bg-white px-5 py-4 text-center shadow-lg shadow-indigo/10">
           <span className="block font-serif text-lg font-bold text-indigo">{meet.name}</span>
           <span className="block text-sm font-semibold text-violet">{meet.role}</span>
-          <span className="block text-sm text-midnight/60">{meet.registration}</span>
+          <span className="block text-sm text-midnight/60">
+            {practice.registration} · {practice.practice_number}
+          </span>
         </figcaption>
       </motion.figure>
 

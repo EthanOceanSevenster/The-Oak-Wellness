@@ -17,7 +17,10 @@ export default async function ContactPage() {
 
   return (
     <>
-      <PageHeader title={content.page_titles.contact} />
+      <PageHeader
+        title={content.page_titles.contact}
+        intro={`${content.practice.registration} · ${content.practice.practice_number}`}
+      />
       <ContactDetails contact={content.contact} />
       <BookingCta contact={content.contact} />
     </>
