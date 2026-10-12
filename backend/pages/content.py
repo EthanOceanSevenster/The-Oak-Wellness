@@ -2,14 +2,14 @@
 Content for every page of the site, served to the Next.js frontend via
 /api/content/.
 
-Everything here comes from The Oak Wellness practice profile, business card
+Everything here comes from The Oak Families and Wellness practice profile, business card
 and updated mission and vision. Only add information the practice has
 supplied.
 """
 
 SITE_CONTENT = {
     'practice': {
-        'name': 'The Oak Wellness',
+        'name': 'The Oak Families and Wellness',
         'tagline': 'Strength • Growth • Wellness',
         'registration': 'Reg No: 10-28261',
         'practice_number': 'Practice No: 1369229',
@@ -21,7 +21,7 @@ SITE_CONTENT = {
             'future.'
         ),
         'subtitle': (
-            'The Oak Wellness is a private social work practice dedicated to '
+            'The Oak Families and Wellness is a private social work practice dedicated to '
             'strengthening individuals, families, children, adolescents, parents '
             'and employees through professional counselling, coaching and '
             'psychosocial support.'
@@ -37,13 +37,13 @@ SITE_CONTENT = {
     # Introduction from the social worker, with her photo. The home page shows
     # the first two paragraphs; the About page shows all of them.
     'meet': {
-        'title': 'Meet Sinobungcwele Tabita Kwatsha',
-        'name': 'Sinobungcwele Tabita Kwatsha',
+        'title': 'Meet Tabita Zenani Kwatsha',
+        'name': 'Tabita Zenani Kwatsha',
         'role': 'Social Worker in Private Practice',
         'paragraphs': [
             'Welcome to The Oak Families and Wellness.',
             (
-                'My name is Sinobungcwele Tabita Kwatsha, a qualified and '
+                'My name is Tabita Zenani Kwatsha, a qualified and '
                 'registered Social Worker with over 15 years of professional '
                 'experience supporting children, adolescents, adults and families. '
                 'I hold a Bachelor of Social Work degree from the University of '
@@ -77,7 +77,7 @@ SITE_CONTENT = {
     'about': {
         'paragraphs': [
             (
-                'The Oak Wellness is a private social work practice dedicated to '
+                'The Oak Families and Wellness is a private social work practice dedicated to '
                 'strengthening individuals, families, children, adolescents, '
                 'parents and employees through professional counselling, coaching '
                 'and psychosocial support.'
@@ -208,9 +208,17 @@ SITE_CONTENT = {
             'People experiencing personal, emotional, family or workplace challenges',
         ],
     },
+    # Fees supplied by the practice.
+    'fees': {
+        'title': 'Fees',
+        'items': [
+            {'label': 'Individual sessions', 'amount': 'From R600'},
+            {'label': 'Group therapy', 'amount': 'From R800'},
+        ],
+    },
     'approach': [
         (
-            'The Oak Wellness follows a person-centred and strengths-based '
+            'The Oak Families and Wellness follows a person-centred and strengths-based '
             'approach. Every client is treated with dignity and encouraged to '
             'participate actively in developing practical solutions suited to '
             'their circumstances.'
@@ -223,7 +231,7 @@ SITE_CONTENT = {
         ),
     ],
     'commitment': (
-        'At The Oak Wellness, we believe that every person has the capacity to '
+        'At The Oak Families and Wellness, we believe that every person has the capacity to '
         'heal, grow and build a healthier future. We are committed to walking '
         'alongside our clients with compassion, professionalism and hope.'
     ),

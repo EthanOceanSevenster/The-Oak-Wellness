@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-admin.site.site_header = 'The Oak Wellness admin'
-admin.site.site_title = 'The Oak Wellness admin'
+admin.site.site_header = 'The Oak Families and Wellness admin'
+admin.site.site_title = 'The Oak Families and Wellness admin'
 admin.site.index_title = 'Bookings and site administration'
 
 urlpatterns = [

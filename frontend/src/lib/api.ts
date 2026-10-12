@@ -63,6 +63,10 @@ export type SiteContent = {
     intro: string;
     groups: string[];
   };
+  fees: {
+    title: string;
+    items: { label: string; amount: string }[];
+  };
   approach: string[];
   commitment: string;
   contact: Contact;

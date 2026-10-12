@@ -1,6 +1,6 @@
-# The Oak Wellness
+# The Oak Families and Wellness
 
-Website for The Oak Wellness, a social work practice in Gqeberha.
+Website for The Oak Families and Wellness, a social work practice in Gqeberha.
 
 - `backend/` – Django API.
   - `pages` app: the content for every page lives in `backend/pages/content.py` and is served at `/api/content/`.

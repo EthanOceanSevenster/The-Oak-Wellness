@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { Unavailable } from "@/components/Unavailable";
 import { BookingCta } from "@/components/sections/BookingCta";
+import { Fees } from "@/components/sections/Fees";
 import { ServiceGroups } from "@/components/sections/ServiceGroups";
 import { ServicePhotos } from "@/components/sections/ServicePhotos";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
@@ -23,6 +24,7 @@ export default async function ServicesPage() {
       <ServicePhotos />
       <ServiceGroups services={content.services} />
       <WhoWeServe whoWeServe={content.who_we_serve} />
+      <Fees fees={content.fees} />
       <BookingCta contact={content.contact} />
     </>
   );

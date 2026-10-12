@@ -74,7 +74,7 @@ export function BookingForm({
           Thank you, {firstName}
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-midnight/75">
-          Your booking request has been sent to The Oak Wellness.
+          Your booking request has been sent to The Oak Families and Wellness.
         </p>
         <p className="mt-3 text-midnight/70">
           You can also call or{" "}
@@ -287,7 +287,7 @@ export function BookingForm({
             className="mt-1 h-5 w-5 shrink-0 accent-indigo"
           />
           <span className="leading-relaxed text-midnight/80">
-            I agree that The Oak Wellness may keep these details and contact me about
+            I agree that The Oak Families and Wellness may keep these details and contact me about
             my booking.
           </span>
         </label>

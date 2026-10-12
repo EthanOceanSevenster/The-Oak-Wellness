@@ -22,11 +22,11 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: "The Oak Wellness",
-    template: "%s | The Oak Wellness",
+    default: "The Oak Families and Wellness",
+    template: "%s | The Oak Families and Wellness",
   },
   description:
-    "The Oak Wellness is a private social work practice dedicated to strengthening individuals, families, children, adolescents, parents and employees through professional counselling, coaching and psychosocial support.",
+    "The Oak Families and Wellness is a private social work practice dedicated to strengthening individuals, families, children, adolescents, parents and employees through professional counselling, coaching and psychosocial support.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

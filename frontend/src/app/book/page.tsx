@@ -7,7 +7,7 @@ import { BookingForm } from "./BookingForm";
 
 export const metadata: Metadata = {
   title: "Book a Session",
-  description: "Request a session with The Oak Wellness.",
+  description: "Request a session with The Oak Families and Wellness.",
 };
 
 export default async function BookPage() {

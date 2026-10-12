@@ -8,7 +8,7 @@ import { getSiteContent } from "@/lib/api";
 export const metadata: Metadata = {
   title: "Contact Details",
   description:
-    "The Oak Wellness, 134 Kempston Road, Gqeberha. Telephone: 079 260 4577. Email: zenanitab@gmail.com",
+    "The Oak Families and Wellness, 134 Kempston Road, Gqeberha. Telephone: 079 260 4577. Email: zenanitab@gmail.com",
 };
 
 export default async function ContactPage() {

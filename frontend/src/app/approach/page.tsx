@@ -8,7 +8,7 @@ import { getSiteContent } from "@/lib/api";
 export const metadata: Metadata = {
   title: "Our Approach",
   description:
-    "The Oak Wellness follows a person-centred and strengths-based approach.",
+    "The Oak Families and Wellness follows a person-centred and strengths-based approach.",
 };
 
 export default async function ApproachPage() {

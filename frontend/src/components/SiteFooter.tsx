@@ -92,7 +92,7 @@ export function SiteFooter({ content }: { content: SiteContent | null }) {
       </div>
       <div className="border-t border-paper/10">
         <p className="mx-auto max-w-6xl px-5 py-6 text-sm text-paper/55 sm:px-8">
-          &copy; {new Date().getFullYear()} The Oak Wellness. All rights reserved.
+          &copy; {new Date().getFullYear()} The Oak Families and Wellness. All rights reserved.
         </p>
       </div>
     </footer>
