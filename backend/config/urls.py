@@ -19,10 +19,11 @@ from django.urls import include, path
 
 admin.site.site_header = 'The Oak Families and Wellness admin'
 admin.site.site_title = 'The Oak Families and Wellness admin'
-admin.site.index_title = 'Bookings and site administration'
+admin.site.index_title = 'Bookings, forms and site administration'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('pages.urls')),
     path('api/bookings/', include('bookings.urls')),
+    path('api/forms/', include('clientforms.urls')),
 ]

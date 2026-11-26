@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'pages',
     'bookings',
+    'clientforms',
 ]
 
 MIDDLEWARE = [

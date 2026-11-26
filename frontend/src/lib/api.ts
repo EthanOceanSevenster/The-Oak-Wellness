@@ -83,6 +83,46 @@ export type BookingOptions = {
   contact_methods: Option[];
 };
 
+export type FormSummary = {
+  slug: string;
+  title: string;
+  audience: string;
+  summary: string;
+  pdf: string;
+};
+
+type BaseField = {
+  name: string;
+  label?: string;
+  short?: string;
+  required?: boolean;
+};
+
+export type FormField =
+  | (BaseField & {
+      type: "text" | "email" | "tel" | "date" | "textarea";
+      autocomplete?: string;
+      inputmode?: "numeric";
+      past?: boolean;
+    })
+  | (BaseField & { type: "choice"; options: Option[] })
+  | (BaseField & { type: "multi"; options: Option[]; other?: boolean })
+  | (BaseField & { type: "scale"; scale: Option[]; statements: string[] })
+  | (BaseField & { type: "agree"; label: string });
+
+export type FormSection = {
+  title: string;
+  text?: string[];
+  bullets?: string[];
+  after?: string[];
+  fields?: FormField[];
+};
+
+export type FormDefinition = FormSummary & {
+  sections: FormSection[];
+  footnote?: string;
+};
+
 async function getJson<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(apiUrl(path), { cache: "no-store" });
@@ -103,3 +143,19 @@ export const getSiteContent = cache(() => getJson<SiteContent>("/api/content/"))
 export const getBookingOptions = cache(() =>
   getJson<BookingOptions>("/api/bookings/options/"),
 );
+
+export const getForms = cache(() => getJson<{ forms: FormSummary[] }>("/api/forms/"));
+
+export const getForm = cache(async (slug: string): Promise<FormDefinition | null | "missing"> => {
+  try {
+    const res = await fetch(apiUrl(`/api/forms/${encodeURIComponent(slug)}/`), {
+      cache: "no-store",
+    });
+    if (res.status === 404) return "missing";
+    if (!res.ok) throw new Error(`API responded with ${res.status}`);
+    return await res.json();
+  } catch (error) {
+    console.error(`Could not load form ${slug} from ${API_URL}:`, error);
+    return null;
+  }
+});

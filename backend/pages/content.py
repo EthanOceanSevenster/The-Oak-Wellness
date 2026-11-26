@@ -237,10 +237,10 @@ SITE_CONTENT = {
     ),
     'contact': {
         'address_lines': ['134 Kempston Road', 'Gqeberha'],
-        'phone': '079 260 4577',
-        'phone_href': 'tel:+27792604577',
+        'phone': '065 869 5856',
+        'phone_href': 'tel:+27658695856',
         # Same number, confirmed by the practice for WhatsApp.
-        'whatsapp_href': 'https://wa.me/27792604577',
+        'whatsapp_href': 'https://wa.me/27658695856',
         'email': 'zenanitab@gmail.com',
     },
 }

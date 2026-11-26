@@ -5,7 +5,8 @@ Website for The Oak Families and Wellness, a social work practice in Gqeberha.
 - `backend/` – Django API.
   - `pages` app: the content for every page lives in `backend/pages/content.py` and is served at `/api/content/`.
   - `bookings` app: booking requests from the website. `POST /api/bookings/` saves a request and emails the practice; `GET /api/bookings/options/` lists the form's choices.
-- `frontend/` – Next.js site (App Router, TypeScript, Tailwind) with these pages: Home, About (`/about`), Services (`/services`), Approach (`/approach`), Contact (`/contact`) and Book a session (`/book`).
+  - `clientforms` app: the practice's forms (consent, stress questionnaire, wellness check-in and two evaluations), defined in `backend/clientforms/definitions.py`. `GET /api/forms/` lists them, `GET /api/forms/<slug>/` returns one, and `POST /api/forms/<slug>/` saves a submission, emails the practice and returns a WhatsApp link with the answers typed in for the client to send.
+- `frontend/` – Next.js site (App Router, TypeScript, Tailwind) with these pages: Home, About (`/about`), Services (`/services`), Approach (`/approach`), Forms (`/forms`, one page per form), Contact (`/contact`) and Book a session (`/book`). The original PDFs are in `frontend/public/forms/`.
 
 ## Running locally
 

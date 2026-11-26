@@ -2,6 +2,7 @@
 
 import { CircleCheck, LoaderCircle, Send } from "lucide-react";
 import { useActionState, useEffect, useRef, type ReactNode } from "react";
+import Link from "next/link";
 import { ButtonLink } from "@/components/ButtonLink";
 import type { BookingOptions, Contact } from "@/lib/api";
 import { requestBooking, type BookingFormState } from "./actions";
@@ -94,6 +95,13 @@ export function BookingForm({
             {contact.email}
           </a>
           .
+        </p>
+        <p className="mx-auto mt-6 max-w-lg rounded-2xl bg-lilac p-5 text-midnight/80">
+          New client? Please complete the{" "}
+          <Link href="/forms/consent" className="font-semibold text-violet underline">
+            consent form
+          </Link>{" "}
+          before your first session.
         </p>
         <ButtonLink href="/" variant="secondary" className="mt-8">
           Back to home
